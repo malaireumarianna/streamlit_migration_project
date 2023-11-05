@@ -133,7 +133,7 @@ st.plotly_chart(fig4, use_container_width=True)
 
 
 
-fig5 = px.box(filtered_df, x='Year', y='Value')
+fig5 = px.box(filtered_df, x='AreaName', y='Value')
 #, facet_col="OdName", facet_col_wrap=2, color="OdName")
 
 st.plotly_chart(fig5, use_container_width=True)
