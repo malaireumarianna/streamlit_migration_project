@@ -128,14 +128,14 @@ st.plotly_chart(fig3, use_container_width=True)
 area_df = new_df[['Year','OdName','Value']]
 
 fig4 = px.area(new_df, x='Year', y='Value', facet_col="OdName", facet_col_wrap=2, color="OdName")
-
+st.title("Top 6 contries with hightest emigration")
 st.plotly_chart(fig4, use_container_width=True)
 
 
 
 fig5 = px.box(filtered_df, x='Year', y='Value')
 #, facet_col="OdName", facet_col_wrap=2, color="OdName")
-st.title("Top 6 contries with hightest emigration")
+
 st.plotly_chart(fig5, use_container_width=True)
 
 
