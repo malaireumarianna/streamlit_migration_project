@@ -71,8 +71,8 @@ selected_year = st.sidebar.multiselect("Select Year", melted_df['Year'].unique()
 
 filtered_df = melted_df[(melted_df['Year'].isin(selected_year)) & (melted_df['RegName'].isin(selected_area)) & (melted_df['DevName'].isin(selected_dev_name))]
 # Create pie chart
-fig = px.pie(filtered_df, names='AreaName', values='Value')
-fig1 = px.pie(filtered_df, names='RegName', values='Value')
+fig = px.pie(filtered_df, names='AreaName', values='Value', title="Pie Chart for Area/Reg Values")
+fig1 = px.pie(filtered_df, names='RegName', values='Value', title="Pie Chart for Reg. Values")
 
 
 
@@ -81,10 +81,9 @@ fig1 = px.pie(filtered_df, names='RegName', values='Value')
 with data_container:
     plot1, plot2 = st.columns(2)
     with plot1:
-        st.title("Pie Chart for Area Values")
+
         st.plotly_chart(fig, use_container_width=True)
     with plot2:
-        st.title("Pie Chart for Reg. Values")
         st.plotly_chart(fig1, use_container_width=True)
 
 #filtered_df['Value'] = filtered_df.groupby(['Year', 'OdName'])['Value'].sum()
@@ -122,23 +121,14 @@ new_df = filtered_df[filtered_df['OdName'].isin(top_6_odnames['OdName'])]
 
 # Create a line chart
 fig3 = px.line(new_df, x='Year', y='Value', color='OdName', symbol="OdName")
-st.title("Top 6 contries with hightest emigration")
+st.title("Top 6 contries with hightest emigration rate")
 st.plotly_chart(fig3, use_container_width=True)
 
 area_df = new_df[['Year','OdName','Value']]
 
 fig4 = px.area(new_df, x='Year', y='Value', facet_col="OdName", facet_col_wrap=2, color="OdName")
-st.title("Top 6 contries with hightest emigration")
+st.title("Top 6 contries with hightest emigration rate")
 st.plotly_chart(fig4, use_container_width=True)
-
-
-
-fig5 = px.box(filtered_df, x='AreaName', y='Value')
-#, facet_col="OdName", facet_col_wrap=2, color="OdName")
-
-st.plotly_chart(fig5, use_container_width=True)
-
-
 
 
 
@@ -146,4 +136,5 @@ fig6 = px.scatter_geo(filtered_df, lat='latitude', lon='longitude', color="RegNa
                      hover_name="OdName", size="Value",
                      animation_frame="Year",
                      projection="natural earth")
+st.title("Distribution of migration data on map by year")
 st.plotly_chart(fig6, use_container_width=True)
