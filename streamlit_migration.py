@@ -71,7 +71,7 @@ selected_year = st.sidebar.multiselect("Select Year", melted_df['Year'].unique()
 
 filtered_df = melted_df[(melted_df['Year'].isin(selected_year)) & (melted_df['RegName'].isin(selected_area)) & (melted_df['DevName'].isin(selected_dev_name))]
 # Create pie chart
-fig = px.pie(filtered_df, names='AreaName', values='Value', title="Pie Chart for Area/Reg Values")
+fig = px.pie(filtered_df, names='AreaName', values='Value', title="Pie Chart for Area Values")
 fig1 = px.pie(filtered_df, names='RegName', values='Value', title="Pie Chart for Reg. Values")
 
 
